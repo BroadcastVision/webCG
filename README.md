@@ -1,6 +1,8 @@
 # webCG
 WebCG (https://mz.unic.ac.cy/webcg/) is a framework capable of generating dynamic HTML templates for CasparCG.
 
+![webCG Rundown Environment](https://mz.unic.ac.cy/wp-content/uploads/2016/08/Rundown.png)
+
 # Overview
 
 WebCG is an open source framework capable of generating dynamic HTML templates for CasparCG. It provides all functionalities to add your own code: CSS, HTML, PHP and Javascript. It allows the user to control dynamically specific elements in the HTML template by inserting them values while the graphics are On-Air.
