@@ -34,3 +34,23 @@ Once you save the layer you will notice that on the Rundown, under the layer nam
 * Slow loading times? Make sure you disable your Antivirus and Firewall.
 * Smooth font edges issue? Try working with SVG fonts. [Read more here](http://nimbupani.com/about-fonts-in-svg.html)
 * Enable [gzip](https://www.gnu.org/software/gzip/) on your web server for faster loading times of your HTML templates.
+
+# ChangeLog
+* v1.5 (29/12/2016):
+** Layer icons from Font Awesome.
+* v1.4 (26/12/2016):
+** Generation of HTML files instead of plain php for faster and more stable playback.
+** Update of various .js scripts.
+** Folder restructuring and visual updates.
+* v1.3 (07/09/2016):
+** New layers: Elections, Lower third, Weather (forecast.io API), Credits, Twitter Feed.
+** Rundown dynamic fields inputs, display a placeholder for more info.
+* v1.2 (30/08/2016):
+** Bug fix: dynamic field JavaScript function.
+* v1.1 (25/08/2016):
+** Improvement in the control function (INVOKE) of the dynamic fields.
+** Option to make layers visible (active) or not in the rundown.
+** Option to Clone a layer.
+** Improvements in the loading speed of templates.
+* v1.0 (01/08/2016):
+** Initial release.
