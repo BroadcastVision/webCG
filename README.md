@@ -1,7 +1,7 @@
 # webCG
 WebCG (https://mz.unic.ac.cy/webcg/) is a framework capable of generating dynamic HTML templates for CasparCG.
 
-Overview
+# Overview
 
 WebCG is an open source framework capable of generating dynamic HTML templates for CasparCG. It provides all functionalities to add your own code: CSS, HTML, PHP and Javascript. It allows the user to control dynamically specific elements in the HTML template by inserting them values while the graphics are On-Air.
 
@@ -17,18 +17,18 @@ To activate the dynamic fields in the HTML template, add div with the following 
 
 Once you save the layer you will notice that on the Rundown, under the layer name, a group of inputs are generated in order to assign values. Once you add a text hit Update.
 
-#Installation
-1.Make sure you are running a web server (recommend WAMP Server).
-2.Unzip the contents of the download file into www folder.
-3.Inside folder database, you will find the database file, called cg.sql
-4.Open phpMyAdmin (http://127.0.0.1/phpmyadmin). The default username is root and password is empty (leave it blank).
-5.Create a new database. Call it cg.
-6.Import cg.sql into cg database.
-7.Access WebCG from http://127.0.0.1/webcg (always access WebCG from the IP of your machine and not from localhost)
+# Installation
+1. Make sure you are running a web server (recommend WAMP Server).
+2. Unzip the contents of the download file into www folder.
+3. Inside folder database, you will find the database file, called cg.sql
+4. Open phpMyAdmin (http://127.0.0.1/phpmyadmin). The default username is root and password is empty (leave it blank).
+5. Create a new database. Call it cg.
+6. Import cg.sql into cg database.
+7. Access WebCG from http://127.0.0.1/webcg (always access WebCG from the IP of your machine and not from localhost)
 
-Resources/Tips
-*CasparCG Forum topic
-*Install webCG on a diffrent computer and proper setup of the web server. Read more here
-*Slow loading times? Make sure you disable your Antivirus and Firewall.
-*Smooth font edges issue? Try working with SVG fonts. Read more here
-*Enable gzip on your web server for faster loading times of your HTML templates.
+# Resources/Tips
+* [CasparCG Forum topic](http://casparcg.com/forum/viewtopic.php?f=9&t=3938)
+* Install webCG on a diffrent computer and proper setup of the web server. [Read more here](http://casparcg.com/forum/viewtopic.php?f=9&t=3938#p27194)
+* Slow loading times? Make sure you disable your Antivirus and Firewall.
+* Smooth font edges issue? Try working with SVG fonts. [Read more here](http://nimbupani.com/about-fonts-in-svg.html)
+* Enable [gzip](https://www.gnu.org/software/gzip/) on your web server for faster loading times of your HTML templates.
