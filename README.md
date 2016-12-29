@@ -37,7 +37,7 @@ Once you save the layer you will notice that on the Rundown, under the layer nam
 
 # ChangeLog
 * v1.5 (29/12/2016):
-⋅⋅* Layer icons from Font Awesome.
+... Layer icons from Font Awesome.
 * v1.4 (26/12/2016):
 ⋅⋅* Generation of HTML files instead of plain php for faster and more stable playback.
 ..* Update of various .js scripts.
