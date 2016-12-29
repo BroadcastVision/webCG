@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Preview: Credits</title>
+		<meta charset="utf-8">
+		<style>
+			* {
+				-webkit-box-sizing: border-box;
+				Box-Sizing:border-box;
+				-webkit-backface-visibility: hidden;
+				-webkit-transition: translate3d(0,0,0);
+			}
+			html, body {
+				width: 1920px;
+				height: 1080px;
+				margin: 0; 
+				padding: 0; 
+				background: transparent;
+				overflow: hidden;
+				-webkit-font-smoothing: antialiased !important;
+			}
+			body{
+    font-family:arial;
+    text-align: left;
+    color:#fff;
+	font-size:45px;
+	text-transform: uppercase;
+}
+
+#credits{
+    background:rgba(0, 0, 0, 0.9);
+    padding:100px;
+    width:50%;
+    height:100%;
+    float:right;
+}
+
+ul{
+    list-style-type:none;
+}
+
+li{
+    margin-bottom:40px;
+}
+
+#slide1, #slide2, #slide3{
+    display:none;
+}		
+		</style>
+    </head>	
+	<body>
+		 <div id="credits">
+    <ul id="slide1">
+        <li>Title 1<br><strong>Name Surname</strong></li>
+        <li>Title 2<br><strong>Name Surname</strong></li>
+        <li>Title 3<br><strong>Name Surname</strong></li>
+        <li>Title 4<br><strong>Name Surname</strong></li>
+        <li>Title 5<br><strong>Name Surname</strong></li>
+        <li>Title 6<br><strong>Name Surname</strong></li>
+    </ul>
+    <ul id="slide2">
+        <li>Title 7<br><strong>Name Surname</strong></li>
+        <li>Title 8<br><strong>Name Surname</strong></li>
+        <li>Title 9<br><strong>Name Surname</strong></li>
+        <li>Title 10<br><strong>Name Surname</strong></li>
+        <li>Title 11<br><strong>Name Surname</strong></li>
+        <li>Title 12<br><strong>Name Surname</strong></li>
+    </ul>
+    <ul id="slide3">
+        <li><img src="http://127.0.0.1/webcg/layers/credits/logo.png"></li>
+         <li><strong>WebCG. This is a PHP generated date 2016©</strong></li>
+    </ul>
+</div> 		
+		<!-- JQquery -->
+		<script src="http://127.0.0.1/webcg/assets/jquery-3.1.1.min.js"></script>
+		
+				
+		
+		<script>
+    $("#slide1").delay(1000).fadeIn().delay(3000).fadeOut(400);
+    $("#slide2").delay(5000).fadeIn().delay(3000).fadeOut(400);
+    $("#slide3").delay(9000).fadeIn();
+    $("#credits").delay(15000).fadeOut(200);
+</script>		
+	</body>
+</html>

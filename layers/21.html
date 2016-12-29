@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Preview: NewsCG</title>
+		<meta charset="utf-8">
+		<style>
+			* {
+				-webkit-box-sizing: border-box;
+				Box-Sizing:border-box;
+				-webkit-backface-visibility: hidden;
+				-webkit-transition: translate3d(0,0,0);
+			}
+			html, body {
+				width: 1920px;
+				height: 1080px;
+				margin: 0; 
+				padding: 0; 
+				background: transparent;
+				overflow: hidden;
+				-webkit-font-smoothing: antialiased !important;
+			}
+			#lowerthird{
+	position:absolute;
+	bottom: 80px;
+	width:100%;
+	text-align: left;
+	font-Family: arial;
+}			
+#bg{
+	background-color: rgba(255, 255, 255, 0.9);
+	color: #444444;
+	padding: 4px 10px 4px 330px;
+	text-align: left;
+	font-size: 50px;
+	text-transform: uppercase;
+	height:125px;
+}			
+#f0{
+	font-weight: bold;
+}
+#clock{
+	background:#9A0D02;
+	color:#FFFFFF;
+	text-transform:uppercase;
+	width:540px;
+	text-align:right;
+	padding:4px 10px;
+	font-size:20px;
+	font-weight:bold;			
+}
+#feed{
+	background:#555;
+	color:#FFFFFF;
+	text-transform:uppercase;
+	text-align:right;
+	padding:4px 10px;
+	font-size:20px;
+}
+.marquee {
+  overflow: hidden;
+}
+#ticker{
+    width:100%;
+	background:#222;
+	color:#fff;
+	text-transform:uppercase;
+	text-align:left;
+	padding: 4px 10px 4px 334px;
+	font-size:20px;
+}
+#ticker div {
+    display: inline-block;
+    word-wrap: break-word;
+}		
+		</style>
+    </head>	
+	<body>
+		 <div id="lowerthird">
+    <div id="bg">
+    	<div id="f0" placeholder="Main Title">Dynamic Field f0</div>
+    	<div id="f1" placeholder="Secondary Title">Dynamic Field f1</div>
+    </div>
+    <div id="feed">
+        <div class='marquee'>
+            <strong>Latest News:</strong>
+            Japan's Emperor Akihito hints at wish to abdicate.
+            Delta flights grounded after systems outage.
+            Prince's estate denies planning to sell his Paisley Park home.
+            Android bug fear in 900 million phones.</div>
+    </div>
+    <div id="ticker">
+        <strong>Latest News:</strong>
+        <ul>
+            <li>Japan's Emperor Akihito hints at wish to abdicate.</li>
+            <li>Delta flights grounded after systems outage.</li>
+            <li>Prince's estate denies planning to sell his Paisley Park home.</li>
+        </ul>
+    </div>
+    <div id="clock">
+        New York <span id="time-part"></span>
+    </div>
+</div> 		
+		<!-- JQquery -->
+		<script src="http://127.0.0.1/webcg/assets/jquery-3.1.1.min.js"></script>
+		
+				<script>			
+			// Update dynamic fields if a change is detected.
+			function DynamicFields(f0, f0_value, f1, f1_value) {
+			  				$('#f0').html(unescape(f0_value));
+								$('#f1').html(unescape(f1_value));
+							}			
+		</script>		
+				
+		
+		<script src="http://127.0.0.1/webcg/layers-assets/newscg/moment.js"></script>
+<script src="http://127.0.0.1/webcg/layers-assets/newscg/jquery.marquee.min.js"></script>
+<script src="http://127.0.0.1/webcg/layers-assets/newscg/jquery.ticker.min.js"></script>
+<script>
+$(document).ready(function() {
+	var interval = setInterval(function() {
+		var momentNow = moment();
+		$("#time-part").html(momentNow.format("HH:mm:ss"));
+	}, 100);
+});
+
+$(".marquee").marquee({
+    duration: 15000,
+    gap: 50,
+    delayBeforeStart: 0,
+    direction: "left",
+    duplicated: true
+});
+
+$("#ticker").ticker();
+</script>		
+	</body>
+</html>

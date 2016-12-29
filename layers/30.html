@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Preview: Lower Third</title>
+		<meta charset="utf-8">
+		<style>
+			* {
+				-webkit-box-sizing: border-box;
+				Box-Sizing:border-box;
+				-webkit-backface-visibility: hidden;
+				-webkit-transition: translate3d(0,0,0);
+			}
+			html, body {
+				width: 1920px;
+				height: 1080px;
+				margin: 0; 
+				padding: 0; 
+				background: transparent;
+				overflow: hidden;
+				-webkit-font-smoothing: antialiased !important;
+			}
+			#lowerthird{
+    position:absolute;
+    bottom: 250px;
+    left:300px;
+    font-family:verdana;
+    text-align: left;
+	text-transform: uppercase;
+}
+
+#name{
+    background-color: rgba(0, 0, 0, 0.2);
+    color:#666;
+    font-size:70px;
+    color:#fff;
+    text-shadow:2px 2px #666;
+    font-weight:bold;
+    padding:0 20px;
+}
+
+#title{
+    background-color: rgba(255, 255, 255, 0.9);
+    color:#666;
+    font-size:40px;
+    font-weight:bold;
+    padding:0 20px;
+    display:inline-block;
+}
+
+		
+		</style>
+    </head>	
+	<body>
+		 <div id="lowerthird">
+    <div id="name">Name Surname</div>
+    <div id="title">Producer</div>
+</div> 		
+		<!-- JQquery -->
+		<script src="http://127.0.0.1/webcg/assets/jquery-3.1.1.min.js"></script>
+		
+				
+		
+		<script>
+    $("#lowerthird").delay(3000).fadeOut(500);
+</script>		
+	</body>
+</html>

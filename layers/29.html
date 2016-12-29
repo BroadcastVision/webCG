@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Preview: Twitter (visual only)</title>
+		<meta charset="utf-8">
+		<style>
+			* {
+				-webkit-box-sizing: border-box;
+				Box-Sizing:border-box;
+				-webkit-backface-visibility: hidden;
+				-webkit-transition: translate3d(0,0,0);
+			}
+			html, body {
+				width: 1920px;
+				height: 1080px;
+				margin: 0; 
+				padding: 0; 
+				background: transparent;
+				overflow: hidden;
+				-webkit-font-smoothing: antialiased !important;
+			}
+			#twitter{
+    background:#1da1f2 url("http://127.0.0.1/webcg/layers-assets/twitter/twitter.svg");
+    background-repeat: no-repeat;
+    background-position: 20px; 
+    width:1000px;
+    height:140px;
+    bottom:200px;
+    right:0;
+    position:absolute;
+    border-radius: 10px 0 0 10px;
+    box-shadow: 4px 4px 2px #14171a;
+    
+    font-family:arial;
+    text-align: left;
+    color:#fff;
+	font-size:28px;
+	text-transform: uppercase;
+
+	padding:20px 30px 20px 160px;
+}
+
+#twitter span{
+    font-weight:bold;
+    font-style: italic;
+}
+
+ul{
+    list-style-type:none;
+    padding:0;
+    margin:0;
+}		
+		</style>
+    </head>	
+	<body>
+		 <div id=twitter>
+    <ul>
+        <li>You’re never too old to splash around. Well, unless your phone isn’t water-resistant. #GalaxyNote7 <span>@SamsungMobileUS</span></li>
+    </ul>
+</div> 		
+		<!-- JQquery -->
+		<script src="http://127.0.0.1/webcg/assets/jquery-3.1.1.min.js"></script>
+		
+				
+		
+		<script>
+    $("#twitter").delay(6000).fadeOut(500);
+</script>		
+	</body>
+</html>

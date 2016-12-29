@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Preview: FHD Color Bars (1kHz)</title>
+		<meta charset="utf-8">
+		<style>
+			* {
+				-webkit-box-sizing: border-box;
+				Box-Sizing:border-box;
+				-webkit-backface-visibility: hidden;
+				-webkit-transition: translate3d(0,0,0);
+			}
+			html, body {
+				width: 1920px;
+				height: 1080px;
+				margin: 0; 
+				padding: 0; 
+				background: transparent;
+				overflow: hidden;
+				-webkit-font-smoothing: antialiased !important;
+			}
+			body{
+    background:url("http://127.0.0.1/webcg/layers-assets/color_bars_hd/HD_ColorBars.svg");
+}
+
+#f0{
+    font-family: "Courier";
+    text-transform: uppercase;
+    text-align: center;
+    color:#000;
+	font-weight:bold;
+	font-size:45px;
+	margin-top:650px;
+}		
+		</style>
+    </head>	
+	<body>
+		 <div id="container">
+    <div id="f0" placeholder="Title">Dynamic Field f0</div>
+</div>
+<audio src="http://127.0.0.1/webcg/layers-assets/color_bars_hd/HD_ColorBars.mp3" autoplay loop> 		
+		<!-- JQquery -->
+		<script src="http://127.0.0.1/webcg/assets/jquery-3.1.1.min.js"></script>
+		
+				<script>			
+			// Update dynamic fields if a change is detected.
+			function DynamicFields(f0, f0_value) {
+			  				$('#f0').html(unescape(f0_value));
+							}			
+		</script>		
+				
+		
+				
+	</body>
+</html>

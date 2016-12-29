@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Preview: Weather (forecast.io API)</title>
+		<meta charset="utf-8">
+		<style>
+			* {
+				-webkit-box-sizing: border-box;
+				Box-Sizing:border-box;
+				-webkit-backface-visibility: hidden;
+				-webkit-transition: translate3d(0,0,0);
+			}
+			html, body {
+				width: 1920px;
+				height: 1080px;
+				margin: 0; 
+				padding: 0; 
+				background: transparent;
+				overflow: hidden;
+				-webkit-font-smoothing: antialiased !important;
+			}
+			body{
+    background: url("http://127.0.0.1/webcg/layers-assets/weather/bg.jpg");
+    padding:100px;
+    font-family:arial;
+    text-transform: uppercase;
+    text-align: left;
+    color:#fff;
+	font-weight:bold;
+}
+
+#weather{
+    height:880px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 5px solid transparent;
+    border-image: linear-gradient(to bottom, #fff 0%, #999 100%);
+    border-image-slice: 1;
+}
+
+#source{
+    background:#555;
+    text-align: left;
+	font-size: 15px;
+	padding:10px 30px;
+}
+
+#title{
+    background:#800000;
+	font-size: 70px;
+	padding:10px 30px;
+	text-shadow: 2px 2px #000;
+}
+
+#temperature{
+    width: 950px;
+    margin: 0 auto;
+    margin-top:100px;
+    text-align:center;
+    font-size:100px;
+    color:black;
+}		
+		</style>
+    </head>	
+	<body>
+		 <div id="weather">
+    <div id="source">Source: Forecast.io</div>
+    <div id="title">London Live Weather</div>
+    <div id="temperature">
+      <canvas id="icon" width="200" height="200"></canvas><br><span id="temp"></span>
+    </div>
+</div> 		
+		<!-- JQquery -->
+		<script src="http://127.0.0.1/webcg/assets/jquery-3.1.1.min.js"></script>
+		
+				
+		
+		<script type="text/javascript"  src="http://127.0.0.1/webcg/layers-assets/weather/skycons.js"></script>
+<script>
+function weather()
+	{
+	$(function() {
+		var apiKey = "ADD YOUR API CODE HERE";
+		var url = "https://api.forecast.io/forecast/";
+		var lati = 51.5171;
+		var longi = -0.1062;
+		var data;
+
+		$.getJSON(url + apiKey + "/" + lati + "," + longi + "?units=uk&callback=?", function(data) {
+		  var temp = data.currently.temperature;
+		  var icon = data.currently.icon;
+		  $("#temp").html(temp + "&deg;C");
+
+		  var skycons = new Skycons({"color": "black"});
+		  skycons.add("icon", icon);
+		  skycons.play();
+		});
+	});
+}
+
+weather(); // Get weather instantly at load.
+setInterval( weather, 60000 ); // Get weather every 2 min.
+</script>		
+	</body>
+</html>
