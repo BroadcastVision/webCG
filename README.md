@@ -36,6 +36,8 @@ Once you save the layer you will notice that on the Rundown, under the layer nam
 * Enable [gzip](https://www.gnu.org/software/gzip/) on your web server for faster loading times of your HTML templates.
 
 # ChangeLog
+* v1.6 (09/01/2017):
+ * FIX: Update Jquery.
 * v1.5 (29/12/2016):
  * Layer icons from Font Awesome.
 * v1.4 (26/12/2016):
