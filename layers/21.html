@@ -2,7 +2,12 @@
 <html>
     <head>
         <title>Preview: NewsCG</title>
+		
 		<meta charset="utf-8">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+		<meta http-equiv="Pragma" content="no-cache"/>
+		<meta http-equiv="Expires" content="0"/>
+		
 		<style>
 			* {
 				-webkit-box-sizing: border-box;
@@ -42,22 +47,12 @@
 	background:#9A0D02;
 	color:#FFFFFF;
 	text-transform:uppercase;
-	width:540px;
+	width:511px;
 	text-align:right;
-	padding:4px 10px;
+	padding:5px 10px;
 	font-size:20px;
-	font-weight:bold;			
-}
-#feed{
-	background:#555;
-	color:#FFFFFF;
-	text-transform:uppercase;
-	text-align:right;
-	padding:4px 10px;
-	font-size:20px;
-}
-.marquee {
-  overflow: hidden;
+	font-weight:bold;
+	height:32px;
 }
 #ticker{
     width:100%;
@@ -65,8 +60,10 @@
 	color:#fff;
 	text-transform:uppercase;
 	text-align:left;
-	padding: 4px 10px 4px 334px;
+	padding: 5px 10px 5px 334px;
 	font-size:20px;
+	height:32px;
+	overflow:hidden;
 }
 #ticker div {
     display: inline-block;
@@ -77,16 +74,8 @@
 	<body>
 		 <div id="lowerthird">
     <div id="bg">
-    	<div id="f0" placeholder="Main Title">Dynamic Field f0</div>
-    	<div id="f1" placeholder="Secondary Title">Dynamic Field f1</div>
-    </div>
-    <div id="feed">
-        <div class='marquee'>
-            <strong>Latest News:</strong>
-            Japan's Emperor Akihito hints at wish to abdicate.
-            Delta flights grounded after systems outage.
-            Prince's estate denies planning to sell his Paisley Park home.
-            Android bug fear in 900 million phones.</div>
+    	<div id="f0" placeholder="Main Title">Main Title</div>
+    	<div id="f1" placeholder="Secondary Title">Secondary Title</div>
     </div>
     <div id="ticker">
         <strong>Latest News:</strong>
@@ -97,9 +86,10 @@
         </ul>
     </div>
     <div id="clock">
-        New York <span id="time-part"></span>
+        Nicosia <span id="time-part"></span>
     </div>
-</div> 		
+</div>
+ 		
 		<!-- JQquery -->
 		<script src="http://127.0.0.1/webcg/assets/jquery-2.1.4.min.js"></script>
 		
@@ -113,7 +103,6 @@
 				
 		
 		<script src="http://127.0.0.1/webcg/layers-assets/newscg/moment.js"></script>
-<script src="http://127.0.0.1/webcg/layers-assets/newscg/jquery.marquee.min.js"></script>
 <script src="http://127.0.0.1/webcg/layers-assets/newscg/jquery.ticker.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -121,14 +110,6 @@ $(document).ready(function() {
 		var momentNow = moment();
 		$("#time-part").html(momentNow.format("HH:mm:ss"));
 	}, 100);
-});
-
-$(".marquee").marquee({
-    duration: 15000,
-    gap: 50,
-    delayBeforeStart: 0,
-    direction: "left",
-    duplicated: true
 });
 
 $("#ticker").ticker();

@@ -14,6 +14,17 @@ if ( isset($_POST['layer_name']) ){
 	add_layer($mysqli, $name);
 	header("Location: ./");
 }
+
+// Check if CasparCG Server is online.
+$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+$connection =  @socket_connect($socket, $ip, $port);
+
+if( $connection ){
+	$status = 'online';
+}
+else {
+	$status = 'offline: <i>' . socket_strerror(socket_last_error( $socket )) . '</i>';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,12 +48,19 @@ if ( isset($_POST['layer_name']) ){
                     <h1 class="page-header">Rundown
 					<div class="pull-right">
 						<button class="btn btn-primary" data-toggle="modal" data-target="#addModal"><i class="fa fa-plus" aria-hidden="true"></i> Add Layer </button>
-						<a href="./" class="btn btn-warning"><i class="fa fa-circle-o-notch" aria-hidden="true"></i> Reload Rundown </a>
-						<button type="button" class="btn btn-danger command" data-command="CLEAR <?php echo $channel;?>"><i class="fa fa-eraser fa-fw"></i> Clear Screen</button>
+						<a href="./" class="btn btn-warning"><i class="fa fa-circle-o-notch" aria-hidden="true"></i> Reload Rundown [F5]</a>
+						<button type="button" class="btn btn-danger command" data-command="CLEAR <?php echo $channel;?>"><i class="fa fa-eraser fa-fw"></i> Clear Channel [F10]</button>
 					</div>
 					</h1>
                 </div>
             </div>
+			
+			<div class="form-group input-group">
+				<span class="input-group-addon"><i><small><i class="fa fa-terminal fa-fw"></i> Executed Command</small></i></span>
+				<input id="executed-command" class="form-control input-sm" type="text" readonly>
+				<span class="input-group-addon"><small><strong>CasparCG</strong> [<?php echo $ip.":".$port;?>] is <?php echo $status; ?></small></span>
+			</div>			
+			
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
@@ -85,13 +103,13 @@ if ( isset($_POST['layer_name']) ){
 										?>
 										<tr>
 											<td><a href="layer.php?id=<?php echo $layer['id']; ?>" title="Layer Settings"><strong><?php echo $layer['name']; ?></strong></a></td>
-											<td><?php echo $layer['video_layer']; ?></td>
-											<td><?php echo $layer['transition_name']; ?></td>
-											<td><?php echo $layer['duration']; ?> frame</td>
-											<td><?php echo $layer['direction_name']; ?></td>
+											<td class="small"><?php echo $layer['video_layer']; ?></td>
+											<td class="small"><?php echo $layer['transition_name']; ?></td>
+											<td class="small"><?php echo $layer['duration']; ?> frame</td>
+											<td class="small"><?php echo $layer['direction_name']; ?></td>
 											<td>
-												<button type="button" class="btn btn-success command" data-command="<?php echo $command_play; ?>"> <i class="fa fa-play" aria-hidden="true"></i> Play </button>
-												<button type="button" class="btn btn-danger command" data-command="<?php echo $command_stop; ?>"> <i class="fa fa-stop" aria-hidden="true"></i> Stop </button>
+												<button type="button" class="btn btn-success btn-sm command" data-command="<?php echo $command_play; ?>"> <i class="fa fa-play" aria-hidden="true"></i> Play </button>
+												<button type="button" class="btn btn-danger btn-sm command" data-command="<?php echo $command_stop; ?>"> <i class="fa fa-stop" aria-hidden="true"></i> Stop </button>
 											</td>
 										</tr>
 										<?php
@@ -102,15 +120,15 @@ if ( isset($_POST['layer_name']) ){
 												<form id="form-<?php echo $layer['id']; ?>">
 													<?php
 													
-													// Get placeholders.
-													$placeholders = detect_placeholders($mysqli, $layer['id']);
+													// Get placeholders and values.
+													list($placeholders, $field_values) = detect_placeholders($mysqli, $layer['id']);
 													
 													$counter = 0;
 													foreach ( detect_f($mysqli, $layer['id']) as $value ){
 													?>
 													<div class="form-group input-group col-lg-2 form-options">
 														<span class="input-group-addon input-sm"><strong><?php echo $value;?></strong></span>
-														<input type="text" name="<?php echo $value;?>" <?php if(isset($placeholders[$counter])){?> placeholder="<?php echo $placeholders[$counter]; ?> <?php } ?>" class="form-control input-sm" required>
+														<input type="text" name="<?php echo $value;?>" <?php if(isset($placeholders[$counter])){?> placeholder="<?php echo $placeholders[$counter]; ?> <?php } ?>" <?php if(isset($field_values[$counter])){?> value="<?php echo htmlspecialchars($field_values[$counter]); ?><?php } ?>" class="form-control input-sm">
 													</div>
 													<?php
 													$counter++;
@@ -144,29 +162,6 @@ if ( isset($_POST['layer_name']) ){
                 </div>
             </div>
             <!-- /.row -->
-			
-			<div class="form-group input-group">
-				<span class="input-group-addon"><i class="fa fa-server fa-fw"></i> Executed Command</span>
-				<input id="executed-command" class="form-control" type="text" readonly>
-			</div>
-			
-			<?php
-			// Check if CasparCG Server is online.
-			$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-			$connection =  @socket_connect($socket, $ip, $port);
-
-			if( $connection ){
-				$status = 'online.';
-			}
-			else {
-				$status = 'offline: <i>' . socket_strerror(socket_last_error( $socket )) . '</i>';
-			}
-			?>
-			
-			<div class="alert alert-info alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-				<p class=""><strong>CasparCG</strong> [<?php echo $ip.":".$port;?>] is <?php echo $status; ?></p>
-			</div>
 			
 			<div class="spacer"></div>
 			
@@ -224,14 +219,35 @@ if ( isset($_POST['layer_name']) ){
 				$('#executed-command').attr('value', command);
 				
 				// Send command to Command Handler for execution.
-				$.ajax({
-					url: 'http://<?php echo $_SERVER["SERVER_ADDR"];?>/<?php echo basename($_SERVER["REQUEST_URI"])?>/logic/CommandHandler.php',
+				$.ajax({			
+					url: 'http://<?php echo $_SERVER["SERVER_ADDR"];?>/<?php echo $folder_main_path; ?>/logic/CommandHandler.php',
 					type: 'POST',
 					data: {casparcg_command: command}
 				});
 
 			});
 		});
+		
+		// On key press.
+		document.onkeydown = function(e) {		
+		switch (e.keyCode) {
+			case 121: // Clear Channel.
+				e.preventDefault();
+				
+				var command = 'CLEAR <?php echo $channel;?>';
+				
+				// Update command textfield for preview.
+				$('#executed-command').attr('value', command);
+				
+				// Send command to Command Handler for execution.
+				$.ajax({			
+					url: 'http://<?php echo $_SERVER["SERVER_ADDR"];?>/<?php echo $folder_main_path;?>/logic/CommandHandler.php',
+					type: 'POST',
+					data: {casparcg_command: command}
+				});
+				break;
+			}
+		}
 		
 		// Layer Update Execusion.
 		$(document).ready(function() {
@@ -248,10 +264,19 @@ if ( isset($_POST['layer_name']) ){
 								
 				$('form#form-'+layer_id+' input[type=text]').each(function(){
 					var name = $(this).attr("name");
-					var value = $(this).val();					
+					var value = $(this).val();
+
+					// Update the file template permanent to reflect changes in f[] values.
+					$.ajax({
+						url: 'logic/LayerValuesHandler.php',
+						type: 'POST',
+						data: {layer: layer_id, field_id: name, field_value: value,}
+					});
+
+					// Create array.
 					dynamic_fields.push(name, escape(value));					
 				});
-								
+				
 				// Create command.	
 				
 				// Add single quotes to array values.
@@ -263,14 +288,14 @@ if ( isset($_POST['layer_name']) ){
 
 				// Send command to Command Handler for execution.
 				$.ajax({
-					url: 'http://<?php echo $_SERVER["SERVER_ADDR"];?>/<?php echo basename($_SERVER["REQUEST_URI"])?>/logic/CommandHandler.php',
+					url: 'http://<?php echo $_SERVER["SERVER_ADDR"];?>/<?php echo $folder_main_path; ?>/logic/CommandHandler.php',
 					type: 'POST',
 					data: {casparcg_command: command}
 				});
 				
 				// Update command textfield for preview.
 				$('#executed-command').attr('value', command);
-				
+
 			});
 		});
 	</script>

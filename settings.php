@@ -33,7 +33,7 @@ include("logic/config.php");
                         <div class="panel-body">
 							<p>WebCG is a framework capable of generating dynamic HTML templates for <a href="http://www.casparcg.com/" target="_blank">CasparCG</a>.</p>
 							<p>Successfully tested in <strong>CasparCG Server 2.0.7</strong></p>
-							<p>Project Page: <a href="https://mz.unic.ac.cy/webcg/" target="_blank">https://mz.unic.ac.cy/webcg</a></p>
+							<p>Project Page: <a href="https://github.com/BroadcastEngineer/webCG" target="_blank">https://github.com/BroadcastEngineer/webCG</a></p>
 							<p>For Support or Sugestions please use the <a href="http://casparcg.com/forum/viewtopic.php?f=9&t=3938" target="_blank">CasparCG Forum topic</a></p>
 							<p>Special thanks to the <a href="http://www.casparcg.com/forum" target="_blank">CasparCG Community</a> and Tom Jenkinson for the <a href="https://github.com/tjenkinson/CasparCG-PHP-ServerConnection" target="_blank">PHP ServerConnection class</a>.</p>
 							<p>Theme credits: <a href="https://startbootstrap.com/template-overviews/sb-admin-2/" target="_blank">SB Admin 2</a></p>

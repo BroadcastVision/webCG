@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 
 // CG Version.
-$cg_version = '1.6';
+$cg_version = '1.7';
 
 // Resolution.
 $width = 1920;
@@ -37,4 +37,7 @@ include('functions.php');
 
 // Get page name.
 $page = basename($_SERVER['PHP_SELF']);
+
+// Folder Main.
+$folder_main_path = "webcg";
 ?>

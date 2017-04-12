@@ -2,21 +2,6 @@
 
 include("logic/config.php");
 
-function generate_html_layer($mysqli, $layer){
-	$path = 'http://'.$_SERVER["SERVER_ADDR"].'/'.basename(__DIR__).'/preview.php?id='.$layer;
-	$source = file_get_contents($path);
-	
-	// Fix absolute path.
-	$source = str_replace(
-						array('src="', 'url("'), 
-						array('src="http://'.$_SERVER["SERVER_ADDR"].'/'.basename(__DIR__).'/', 'url("http://'.$_SERVER["SERVER_ADDR"].'/'.basename(__DIR__).'/'), 
-						$source
-						);	
-						
-	// Write to file.
-	file_put_contents("layers/".$layer.".html", $source);
-}
-
 if (isset($_GET['id']) && isset($_GET['clone'])){ // Clone.
 	
 	$id = sanitize($mysqli, $_GET['id']);
@@ -30,7 +15,7 @@ if (isset($_GET['id']) && isset($_GET['clone'])){ // Clone.
 	");
 	
 	// Generate Layer HTML file.
-	generate_html_layer($mysqli, $mysqli->insert_id);
+	generate_html_layer($mysqli, $mysqli->insert_id, $folder_main_path);
 	
 	// Redirect to the new layer page.
 	header("Location: layer.php?id=".$mysqli->insert_id);	
@@ -75,7 +60,7 @@ if (isset($_POST['layer_name'])){ // Update detaills.
 	echo $mysqli->error;
 	
 	// Generate Layer HTML file.
-	generate_html_layer($mysqli, $id);
+	generate_html_layer($mysqli, $id, $folder_main_path);
 
 	// Redirect to the layer page.
 	header("Location: layer.php?id=".$id);	

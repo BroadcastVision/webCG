@@ -60,8 +60,8 @@ function detect_placeholders($mysqli, $id){
 	$result = $mysqli->query("SELECT html_php FROM layers WHERE id = '$id' LIMIT 1");
 	$layer = $result->fetch_assoc();
 	
-	// This array saves all the div id.
 	$placeholders = array();
+	$field_values = array();
 	
 	if ($layer['html_php'] != NULL){	
 		$dom = new DOMdocument();
@@ -75,9 +75,26 @@ function detect_placeholders($mysqli, $id){
 		foreach($nodes as $result){			
 			$div_placeholder = $result->getAttribute('placeholder');
 			$placeholders[] = $div_placeholder;	
+			$field_values[] = $result->textContent;
 		}
 	}
 	
-	return $placeholders;	
+	return array($placeholders, $field_values);	
+}
+
+function generate_html_layer($mysqli, $layer, $folder_main_path){
+		
+	$path = 'http://'.$_SERVER["SERVER_ADDR"].'/'.$folder_main_path.'/preview.php?id='.$layer;
+	$source = file_get_contents($path);
+	
+	// Fix absolute path.
+	$source = str_replace(
+						array('src="', 'url("'), 
+						array('src="http://'.$_SERVER["SERVER_ADDR"].'/'.$folder_main_path.'/', 'url("http://'.$_SERVER["SERVER_ADDR"].'/'.$folder_main_path.'/'), 
+						$source
+						);	
+						
+	// Write to file.
+	file_put_contents($_SERVER['DOCUMENT_ROOT'].'/'.$folder_main_path.'/layers/'.$layer.'.html', $source);
 }
 ?>

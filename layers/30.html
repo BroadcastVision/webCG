@@ -2,7 +2,12 @@
 <html>
     <head>
         <title>Preview: Lower Third</title>
+		
 		<meta charset="utf-8">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+		<meta http-equiv="Pragma" content="no-cache"/>
+		<meta http-equiv="Expires" content="0"/>
+		
 		<style>
 			* {
 				-webkit-box-sizing: border-box;
@@ -21,30 +26,31 @@
 			}
 			#lowerthird{
     position:absolute;
-    bottom: 250px;
-    left:300px;
-    font-family:verdana;
+    bottom: 150px;
+    left:250px;
+    font-family:arial;
     text-align: left;
 	text-transform: uppercase;
+	width:65%;
 }
 
-#name{
-    background-color: rgba(0, 0, 0, 0.2);
-    color:#666;
+
+
+#f0{
+    background-color: #FF4500;
+    color:white;
     font-size:70px;
     color:#fff;
-    text-shadow:2px 2px #666;
     font-weight:bold;
     padding:0 20px;
 }
 
-#title{
+#f1{
     background-color: rgba(255, 255, 255, 0.9);
-    color:#666;
+    color:#000;
     font-size:40px;
     font-weight:bold;
     padding:0 20px;
-    display:inline-block;
 }
 
 		
@@ -52,16 +58,22 @@
     </head>	
 	<body>
 		 <div id="lowerthird">
-    <div id="name">Name Surname</div>
-    <div id="title">Producer</div>
-</div> 		
+    <div id="f0" placeholder="Main Title">Student Name</div>
+    <div id="f1" placeholder="Secondary Title">Student Show</div>
+</div>
+ 		
 		<!-- JQquery -->
 		<script src="http://127.0.0.1/webcg/assets/jquery-2.1.4.min.js"></script>
 		
+				<script>			
+			// Update dynamic fields if a change is detected.
+			function DynamicFields(f0, f0_value, f1, f1_value) {
+			  				$('#f0').html(unescape(f0_value));
+								$('#f1').html(unescape(f1_value));
+							}			
+		</script>		
 				
 		
-		<script>
-    $("#lowerthird").delay(3000).fadeOut(500);
-</script>		
+				
 	</body>
 </html>
