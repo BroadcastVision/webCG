@@ -36,6 +36,13 @@ Once you save the layer you will notice that on the Rundown, under the layer nam
 * Enable [gzip](https://www.gnu.org/software/gzip/) on your web server for faster loading times of your HTML templates.
 
 # ChangeLog
+* **v1.7 (12/04/2017):**
+* On dynamic field update (invoke) the values get save permanently in the layer settings for re-use.
+* Added keyboard shortcut [F10] for Clear Channel.
+* Improve template generation, stability fixes.
+* GUI Improvments.
+* **v1.6 (09/01/2017):**
+* FIX: Update Jquery.
 * **v1.5 (29/12/2016):**
 * Layer icons from Font Awesome.
 * **v1.4 (26/12/2016):**
