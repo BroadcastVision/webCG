@@ -1,5 +1,5 @@
 # webCG
-WebCG (https://mz.unic.ac.cy/webcg/) is a framework capable of generating dynamic HTML templates for CasparCG.
+WebCG is a framework capable of generating dynamic HTML templates for CasparCG.
 
 ![webCG Rundown Environment](https://mz.unic.ac.cy/wp-content/uploads/2016/08/Rundown.png)
 
