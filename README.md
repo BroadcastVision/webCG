@@ -15,7 +15,7 @@ WebCG was designed to be efficient and fast. From the config.php file you can ed
 
 # Dynamic Fields
 
-To activate the dynamic fields in the HTML template, add div with the following format: ```<div id=”f0″></div>``` in the layer HTML + PHP Code section. Only f0, f1, f2, etc. are accepted for dynamic fields name.
+To activate the dynamic fields in the HTML template, add div with the following format: ```<div id="f0"></div>``` in the layer HTML + PHP Code section. Only f0, f1, f2, etc. are accepted for dynamic fields name.
 
 Once you save the layer you will notice that on the Rundown, under the layer name, a group of inputs are generated in order to assign values. Once you add a text hit Update.
 
