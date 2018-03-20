@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 
 // CG Version.
-$cg_version = '1.7';
+$cg_version = '1.8';
 
 // Resolution.
 $width = 1920;

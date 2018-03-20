@@ -30,7 +30,7 @@ else {
 <html lang="en">
 
 <head>
-<title>WebCG</title>
+<title>WebCG Client</title>
 <?php include("head.php"); ?>
 </head>
 
@@ -55,12 +55,19 @@ else {
                 </div>
             </div>
 			
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="alert alert-success">
+                        <strong>CasparCG</strong> [<?php echo $ip.":".$port;?>] is <?php echo $status; ?>
+                    </div>
+                </div>
+			</div>
+
 			<div class="form-group input-group">
-				<span class="input-group-addon"><i><small><i class="fa fa-terminal fa-fw"></i> Executed Command</small></i></span>
-				<input id="executed-command" class="form-control input-sm" type="text" readonly>
-				<span class="input-group-addon"><small><strong>CasparCG</strong> [<?php echo $ip.":".$port;?>] is <?php echo $status; ?></small></span>
-			</div>			
-			
+				<span class="input-group-addon"><i><i class="fa fa-terminal fa-fw"></i> Executed Command</i></span>
+				<input id="executed-command" class="form-control input" type="text" readonly>
+			</div>
+
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
@@ -83,14 +90,14 @@ else {
 								<tbody>
 									<?php
 									$result = $mysqli->query("
-																SELECT layers.id AS id, layers.name AS name, video_layer, transitions.name AS transition_name, duration, directions.name AS direction_name
-																FROM layers, transitions, directions
-																WHERE
-																	layers.visible = '1' AND
-																	layers.transition = transitions.id AND
-																	layers.direction = directions.id
-																ORDER BY video_layer DESC, layers.name
-															");
+										SELECT layers.id AS id, layers.name AS name, video_layer, transitions.name AS transition_name, duration, directions.name AS direction_name
+										FROM layers, transitions, directions
+										WHERE
+											layers.visible = '1' AND
+											layers.transition = transitions.id AND
+											layers.direction = directions.id
+										ORDER BY video_layer DESC, layers.name
+									");
 									
 									$total_layers = mysqli_num_rows($result);
 									
@@ -108,8 +115,15 @@ else {
 											<td class="small"><?php echo $layer['duration']; ?> frame</td>
 											<td class="small"><?php echo $layer['direction_name']; ?></td>
 											<td>
-												<button type="button" class="btn btn-success btn-sm command" data-command="<?php echo $command_play; ?>"> <i class="fa fa-play" aria-hidden="true"></i> Play </button>
-												<button type="button" class="btn btn-danger btn-sm command" data-command="<?php echo $command_stop; ?>"> <i class="fa fa-stop" aria-hidden="true"></i> Stop </button>
+												
+												<div class="btn-group">
+                                                    <button type="button" class="btn btn-sm btn-success command" data-command="<?php echo $command_play; ?>">
+                                                    	<i class="fa fa-play" aria-hidden="true"></i> PLAY
+                                                    </button>
+                                                    <button type="button" class="btn btn-sm btn-danger command" data-command="<?php echo $command_stop; ?>">
+                                                    	<i class="fa fa-stop" aria-hidden="true"></i> STOP
+                                                    </button>
+                                                </div>
 											</td>
 										</tr>
 										<?php
@@ -127,14 +141,24 @@ else {
 													foreach ( detect_f($mysqli, $layer['id']) as $value ){
 													?>
 													<div class="form-group input-group col-lg-2 form-options">
-														<span class="input-group-addon input-sm"><strong><?php echo $value;?></strong></span>
-														<input type="text" name="<?php echo $value;?>" <?php if(isset($placeholders[$counter])){?> placeholder="<?php echo $placeholders[$counter]; ?> <?php } ?>" <?php if(isset($field_values[$counter])){?> value="<?php echo htmlspecialchars($field_values[$counter]); ?><?php } ?>" class="form-control input-sm">
+														<span class="input-group-addon input-sm">
+															<strong><?php echo $placeholders[$counter];?></strong>
+														</span>
+														<input type="text" name="<?php echo $value;?>" 
+														<?php 
+														if(isset($field_values[$counter])){
+														?> 
+															value="<?php echo htmlspecialchars($field_values[$counter]);?>"
+														<?php 
+														} 
+														?>
+														class="form-control input input-sm">
 													</div>
 													<?php
 													$counter++;
 													}
 													?>
-													<button type="button" class="btn btn-primary btn-sm update" data-id="<?php echo $layer['id']; ?>" data-layer="<?php echo $layer['video_layer']; ?>"><i class="fa fa-refresh" aria-hidden="true"></i> Update</button>
+													<button type="button" class="btn btn-sm btn-primary update" data-id="<?php echo $layer['id']; ?>" data-layer="<?php echo $layer['video_layer']; ?>"><i class="fa fa-refresh" aria-hidden="true"></i> UPDATE</button>
 												</form>
 											</td>
 										</tr>

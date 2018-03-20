@@ -6,7 +6,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="./">WebCG (v<?php echo $cg_version; ?>)</a>
+		<a class="navbar-brand" href="./">WebCG Client: v<?php echo $cg_version; ?></a>
 	</div>
 	<!-- /.navbar-header -->
 

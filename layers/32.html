@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Preview: Football: Score Bug</title>
+		
+		<meta charset="utf-8">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+		<meta http-equiv="Pragma" content="no-cache"/>
+		<meta http-equiv="Expires" content="0"/>
+		
+		<style>
+			* {
+				-webkit-box-sizing: border-box;
+				Box-Sizing:border-box;
+				-webkit-backface-visibility: hidden;
+				-webkit-transition: translate3d(0,0,0);
+			}
+			html, body {
+				width: 1920px;
+				height: 1080px;
+				margin: 0; 
+				padding: 0; 
+				background: transparent;
+				overflow: hidden;
+				-webkit-font-smoothing: antialiased !important;
+			}
+			@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+#container{
+    position:absolute;
+    top: 150px;
+    left:250px;
+    font-family: 'Roboto', sans-serif;
+    font-size:50px;
+    font-weight:bold;
+    background:black;
+	text-transform: uppercase;
+	color:white;
+	text-align:center;
+	display: inline-block;
+}
+
+#score, #f0, #f1, #f2, #f3{
+    display:inline-block;
+}
+
+#f2, #f3, #score{
+    width:200px;
+}
+
+#score{
+    background:#2ecc71;
+    color:black;
+}
+
+#f2{
+    border-left:15px solid gold;
+}
+
+#f3{
+    border-right:15px solid red;
+}
+
+		
+		</style>
+    </head>	
+	<body>
+		 <div id="container">
+    <div id="f2" placeholder="Team 1 Name">TM1</div>
+    <div id="score">
+        <div id="f0" placeholder="Team 1 Score">1</div> - <div id="f1" placeholder="Team 2 Score">1</div>
+    </div>
+    <div id="f3" placeholder="Team 2 Name">TM2</div>
+</div>
+ 		
+		<!-- JQquery -->
+		<script src="http://127.0.0.1/webcg/assets/jquery-2.1.4.min.js"></script>
+		
+				<script>			
+			// Update dynamic fields if a change is detected.
+			function DynamicFields(f2, f2_value, f0, f0_value, f1, f1_value, f3, f3_value) {
+			  				$('#f2').html(unescape(f2_value));
+								$('#f0').html(unescape(f0_value));
+								$('#f1').html(unescape(f1_value));
+								$('#f3').html(unescape(f3_value));
+							}			
+		</script>		
+				
+		
+				
+	</body>
+</html>

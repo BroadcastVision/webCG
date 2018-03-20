@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Preview: Football: Timer</title>
+		
+		<meta charset="utf-8">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+		<meta http-equiv="Pragma" content="no-cache"/>
+		<meta http-equiv="Expires" content="0"/>
+		
+		<style>
+			* {
+				-webkit-box-sizing: border-box;
+				Box-Sizing:border-box;
+				-webkit-backface-visibility: hidden;
+				-webkit-transition: translate3d(0,0,0);
+			}
+			html, body {
+				width: 1920px;
+				height: 1080px;
+				margin: 0; 
+				padding: 0; 
+				background: transparent;
+				overflow: hidden;
+				-webkit-font-smoothing: antialiased !important;
+			}
+			@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+#container{
+    position:absolute;
+    top: 211px;
+    left:464px;
+    font-family: 'Roboto', sans-serif;
+    font-size:50px;
+    font-weight:bold;
+    background:white;
+	text-transform: uppercase;
+	color:black;
+	text-align:center;
+	display: none;
+	width:200px;
+}
+
+#timer{
+    display: inline-block;
+}		
+		</style>
+    </head>	
+	<body>
+		 <div id="container">
+    <div id="timer"></div>
+</div> 		
+		<!-- JQquery -->
+		<script src="http://127.0.0.1/webcg/assets/jquery-2.1.4.min.js"></script>
+		
+				
+		
+		<script src="http://127.0.0.1/webcg/layers-assets/football-timer/moment.js"></script>
+<script>
+//Delay the display of the timer to allow time to load the timer.
+setTimeout(function(){
+   $('#container').show();
+}, 1500);
+
+function startTimer()
+{
+    var startTimestamp = moment().startOf("day");
+    setInterval(function() {
+        startTimestamp.add(1, "second");
+        document.getElementById("timer").innerHTML = 
+            startTimestamp.format('mm:ss');
+    }, 1000);
+}
+
+startTimer();
+</script>		
+	</body>
+</html>

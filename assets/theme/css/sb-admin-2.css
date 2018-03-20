@@ -4,8 +4,15 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 body {
     background-color: #f8f8f8;
+    font-family: 'Roboto', sans-serif;
+}
+
+a, a:hover{
+    color:black;
 }
 
 #wrapper {

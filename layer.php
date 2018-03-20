@@ -101,7 +101,7 @@ $result_directions = $mysqli->query("SELECT * FROM directions");
 
 <head>
 
-	<title>Layer: <?php echo $layer['name']; ?></title>
+	<title>Layer: <?php echo $layer['name']; ?> - WebCG Client</title>
 	<?php include("head.php"); ?>
 	
 	<style>
