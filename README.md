@@ -1,7 +1,7 @@
 # webCG
 WebCG is a framework capable of generating dynamic HTML templates for CasparCG.
 
-![webCG Rundown Environment](https://mz.unic.ac.cy/wp-content/uploads/2016/08/Rundown.png)
+![webCG Rundown Environment](https://raw.githubusercontent.com/BroadcastVision/webCG/master/screenshot/dashboard.png)
 
 # Overview
 
@@ -36,6 +36,11 @@ Once you save the layer you will notice that on the Rundown, under the layer nam
 * Enable [gzip](https://www.gnu.org/software/gzip/) on your web server for faster loading times of your HTML templates.
 
 # ChangeLog
+* **v1.8 (20/03/2018):**
+* Added 2 new layer examples. Football Score Bug and Timer.
+* Dynamic fields shows field name instead f0,1,... for better handling from the operator.
+* Improve template generation, stability fixes.
+* GUI Improvments.
 * **v1.7 (12/04/2017):**
 * On dynamic field update (invoke) the values get save permanently in the layer settings for re-use.
 * Added keyboard shortcut [F10] for Clear Channel.
