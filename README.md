@@ -1,7 +1,7 @@
 # webCG
 WebCG is a framework capable of generating dynamic HTML templates for CasparCG.
 
-!(https://raw.githubusercontent.com/BroadcastVision/webCG/master/screenshot/dashboard.png)
+![webCG](https://raw.githubusercontent.com/BroadcastVision/webCG/master/screenshot/dashboard.png)
 
 # Overview
 
