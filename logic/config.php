@@ -16,7 +16,7 @@ $channel = 1;
 $DB_NAME = 'cg';
 $DB_HOST = 'localhost';
 $DB_USER = 'root';
-$DB_PASS = '';
+$DB_PASS = 'root';
 
 // Database Connection.
 $mysqli = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);

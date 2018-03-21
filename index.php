@@ -21,9 +21,11 @@ $connection =  @socket_connect($socket, $ip, $port);
 
 if( $connection ){
 	$status = 'online';
+	$alert_class = 'alert-success';
 }
 else {
 	$status = 'offline: <i>' . socket_strerror(socket_last_error( $socket )) . '</i>';
+	$alert_class = 'alert-danger';
 }
 ?>
 <!DOCTYPE html>
@@ -47,9 +49,18 @@ else {
                 <div class="col-lg-12">
                     <h1 class="page-header">Rundown
 					<div class="pull-right">
+						<?php 
+                        if($status == 'online'){
+                        ?>
+                        <button type="button" id="kill" class="btn btn-danger command" data-command="KILL" data-toggle="confirmation" data-placement="top">
+                        	<i class="fa fa-times fa-fw"></i> KILL Server
+                        </button>
+                        <?php
+                        }
+                        ?>
 						<button class="btn btn-primary" data-toggle="modal" data-target="#addModal"><i class="fa fa-plus" aria-hidden="true"></i> Add Layer </button>
 						<a href="./" class="btn btn-warning"><i class="fa fa-circle-o-notch" aria-hidden="true"></i> Reload Rundown [F5]</a>
-						<button type="button" class="btn btn-danger command" data-command="CLEAR <?php echo $channel;?>"><i class="fa fa-eraser fa-fw"></i> Clear Channel [F10]</button>
+						<button type="button" class="btn btn-danger command" data-command="CLEAR <?php echo $channel;?>"><i class="fa fa-eraser fa-fw"></i> CLEAR Channel [F10]</button>
 					</div>
 					</h1>
                 </div>
@@ -57,7 +68,7 @@ else {
 			
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="alert alert-success">
+					<div class="alert <?php echo $alert_class; ?>">
                         <strong>CasparCG</strong> [<?php echo $ip.":".$port;?>] is <?php echo $status; ?>
                     </div>
                 </div>
@@ -322,6 +333,15 @@ else {
 
 			});
 		});
+
+		// On KILL button reload page to change the status of the server.
+		$(document).ready(function() {
+			$("#kill").click( function(){
+				setTimeout( function(){ 
+					location.reload();
+				},1000);
+		    });
+	    });
 	</script>
 
 </body>
