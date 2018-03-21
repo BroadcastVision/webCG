@@ -3,6 +3,8 @@ WebCG is a framework capable of generating dynamic HTML templates for CasparCG.
 
 ![webCG](https://raw.githubusercontent.com/BroadcastVision/webCG/master/screenshot/dashboard.png)
 
+![Output](https://raw.githubusercontent.com/BroadcastVision/webCG/master/screenshot/output.jpg)
+
 # Overview
 
 WebCG is an open source framework capable of generating dynamic HTML templates for CasparCG. It provides all functionalities to add your own code: CSS, HTML, PHP and Javascript. It allows the user to control dynamically specific elements in the HTML template by inserting them values while the graphics are On-Air.
